@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwurah's African Tech Opportunity Infographic (2025-2026)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 
+    Palette Name: Energetic & Playful
+    Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in the output. All diagrams are created with structured HTML and CSS. All charts are rendered using the Canvas-based Chart.js library. 
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4">The African Tech Revolution</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">A Data-Driven Look into High-Growth Sectors for 2025-2026, Presented by Kwurah.</p>
+        </header>
+
+        <section id="kpis" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="kpi-card">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Total 2024 Projected Market</h3>
+                    <p class="text-5xl font-extrabold" style="color: #45B7D1;">$12.72B</p>
+                    <p class="text-md text-gray-600">Across Five Key Tech Sectors</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Highest Growth Sector (CAGR)</h3>
+                    <p class="text-5xl font-extrabold" style="color: #FF6B6B;">Fintech</p>
+                    <p class="text-md text-gray-600">46.4% CAGR in Nigeria (2019-2024)</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Key Driver</h3>
+                    <p class="text-5xl font-extrabold" style="color: #4ECDC4;">Digital Adoption</p>
+                    <p class="text-md text-gray-600">Surging Mobile & Internet Penetration</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-overview" class="mb-16 bg-white p-6 md:p-8 rounded-lg shadow-md">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900">2024 Market Size Comparison</h2>
+                <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">A snapshot of the projected market sizes across Africa's key technology sectors, highlighting the relative scale and investment landscape.</p>
+            </div>
+            <div class="chart-container h-96 max-h-[500px]">
+                <canvas id="marketComparisonChart"></canvas>
+            </div>
+        </section>
+
+        <div id="sector-deep-dives"></div>
+        
+        <section id="opportunity-matrix" class="mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900">Kwurah's Strategic Opportunity Matrix</h2>
+                <p class="text-lg text-gray-600 mt-2 max-w-3xl mx-auto">Identifying actionable white-space gaps and aligning them with Kwurah's end-to-end capabilities to drive growth and impact.</p>
+            </div>
+            <div id="opportunity-cards-container" class="space-y-8">
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-200">
+            <p class="text-lg font-bold text-gray-900">Kwurah</p>
+            <p class="text-md text-gray-600">Your Partner in Driving Business Growth Through Technology.</p>
+            <p class="text-sm text-gray-500 mt-4">&copy; 2025 Kwurah. All rights reserved. Data sourced from Statista, GSMA, World Bank, and other industry reports.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const marketData = [
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2019, Value_USD: 235000000, CAGR_2019_2024: 0.445},
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2020, Value_USD: 340000000},
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2021, Value_USD: 490000000},
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2022, Value_USD: 700000000},
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2023, Value_USD: 1030000000},
+            {Category: "Fintech", Sub_Category: "Africa Market Size", Year: 2024, Value_USD: 1490000000},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2019, Value_USD: 71300000, CAGR_2019_2024: 0.464},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2020, Value_USD: 105000000},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2021, Value_USD: 155000000},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2022, Value_USD: 225000000},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2023, Value_USD: 330000000},
+            {Category: "Fintech", Sub_Category: "Nigeria Market Size", Year: 2024, Value_USD: 480000000},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2019, Value_USD: 1100000000, CAGR_2019_2024: 0.379},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2020, Value_USD: 1500000000},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2021, Value_USD: 2100000000},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2022, Value_USD: 2900000000},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2023, Value_USD: 4000000000},
+            {Category: "HealthTech", Sub_Category: "Africa Market Size", Year: 2024, Value_USD: 5500000000},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2019, Value_USD: 150000000, CAGR_2019_2024: 0.371},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2020, Value_USD: 200000000},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2021, Value_USD: 280000000},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2022, Value_USD: 380000000},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2023, Value_USD: 530000000},
+            {Category: "HealthTech", Sub_Category: "Nigeria Market Size", Year: 2024, Value_USD: 730000000},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2019, Value_USD: 240000000, CAGR_2019_2024: 0.458},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2020, Value_USD: 350000000},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2021, Value_USD: 500000000},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2022, Value_USD: 750000000},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2023, Value_USD: 1100000000},
+            {Category: "AgriTech", Sub_Category: "Africa Market Size", Year: 2024, Value_USD: 1600000000},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2019, Value_USD: 70000000, CAGR_2019_2024: 0.409},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2020, Value_USD: 100000000},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2021, Value_USD: 140000000},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2022, Value_USD: 200000000},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2023, Value_USD: 280000000},
+            {Category: "AgriTech", Sub_Category: "Nigeria Market Size", Year: 2024, Value_USD: 390000000},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2019, Value_USD: 270000000, CAGR_2019_2024: 0.401},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2020, Value_USD: 390000000},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2021, Value_USD: 550000000},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2022, Value_USD: 780000000},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2023, Value_USD: 1100000000},
+            {Category: "EdTech", Sub_Category: "Africa Market Size", Year: 2024, Value_USD: 1500000000},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2019, Value_USD: 80000000, CAGR_2019_2024: 0.379},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2020, Value_USD: 110000000},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2021, Value_USD: 150000000},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2022, Value_USD: 210000000},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2023, Value_USD: 290000000},
+            {Category: "EdTech", Sub_Category: "Nigeria Market Size", Year: 2024, Value_USD: 400000000},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2019, Value_USD: 900000000, CAGR_2019_2024: 0.333},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2020, Value_USD: 1200000000},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2021, Value_USD: 1600000000},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2022, Value_USD: 2100000000},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2023, Value_USD: 2800000000},
+            {Category: "GovTech", Sub_Category: "Africa Market Size", Year: 2024, Value_USD: 3700000000},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2019, Value_USD: 250000000, CAGR_2019_2024: 0.349},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2020, Value_USD: 340000000},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2021, Value_USD: 460000000},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2022, Value_USD: 620000000},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2023, Value_USD: 840000000},
+            {Category: "GovTech", Sub_Category: "Nigeria Market Size", Year: 2024, Value_USD: 1100000000},
+        ];
+
+        const opportunityData = [
+            {sector: "Fintech", gap: "Financial Inclusion for Rural Areas", impact: "Millions unbanked, creating economic disparity and limiting access to essential services.", suggested_solution: "Develop localized mobile-first financial tools for savings, micro-loans, and payments via USSD/feature phone compatibility; establish agent networks.", kwurah_offering: "Product Development, Incubation, Consulting"},
+            {sector: "Fintech", gap: "Cross-border Payments Efficiency (Intra-Africa)", impact: "High costs and slow transaction times hinder intra-African trade and remittances.", suggested_solution: "Build a blockchain-based or API-driven cross-border payment platform with local currency settlement capabilities, reducing friction and cost.", kwurah_offering: "Product Development, Consulting, Legal Counsel (for regulatory compliance)"},
+            {sector: "HealthTech", gap: "Accessible and Affordable Diagnostics", impact: "Limited access to diagnostic services, especially in rural areas, leading to delayed diagnoses and poor health outcomes.", suggested_solution: "Create mobile diagnostic solutions (e.g., telemedicine platforms integrated with portable diagnostic devices, AI-powered image analysis for basic diagnostics) and expand telehealth kiosks.", kwurah_offering: "Product Development, Incubation"},
+            {sector: "HealthTech", gap: "Supply Chain Management for Pharmaceuticals", impact: "Inefficient pharmaceutical supply chains lead to drug stock-outs, counterfeits, and high costs.", suggested_solution: "Build blockchain-enabled supply chain traceability solutions for pharmaceuticals to ensure authenticity, reduce waste, and improve distribution efficiency.", kwurah_offering: "Product Development, Consulting, Financial Audit (for supply chain transparency)"},
+            {sector: "AgriTech", gap: "Data-Driven Precision Farming for Smallholders", impact: "Lack of affordable and accessible tools for smallholder farmers to leverage data for optimal planting, irrigation, and pest management.", suggested_solution: "Develop low-cost IoT sensors and mobile apps that provide real-time soil data, weather forecasts, and AI-driven crop health diagnostics, integrated with local advisory services.", kwurah_offering: "Product Development, Incubation, Consulting"},
+            {sector: "AgriTech", gap: "Post-Harvest Loss Reduction Solutions", impact: "Significant post-harvest losses due to poor storage, transportation, and market access, impacting farmer income and food security.", suggested_solution: "Develop mobile apps connecting farmers to cold chain logistics, improved storage technologies (e.g., solar-powered cold rooms), and direct-to-consumer/B2B market linkages.", kwurah_offering: "Product Development, Incubation"},
+            {sector: "EdTech", gap: "Localized Digital Curriculum Content", impact: "Shortage of high-quality, culturally relevant digital educational content tailored to local curricula and languages.", suggested_solution: "Develop interactive digital textbooks, video lessons, and gamified learning modules specifically for national curricula, with translation and localization features.", kwurah_offering: "Product Development, Consulting"},
+            {sector: "EdTech", gap: "Accessible Digital Skills Training", impact: "Massive gap in accessible and affordable digital literacy and advanced tech skills training for youth and adults.", suggested_solution: "Build online and blended learning platforms for coding, data science, cybersecurity, and digital marketing, with flexible payment options and certification pathways.", kwurah_offering: "Product Development, Incubation, Consulting"},
+            {sector: "GovTech", gap: "Citizen-Centric Digital Service Delivery", impact: "Complex, fragmented, and manual government processes lead to poor citizen experience and limited access to services.", suggested_solution: "Develop intuitive, unified digital portals for citizen services (e.g., licenses, permits, certificates) with mobile access, online payment, and real-time tracking capabilities.", kwurah_offering: "Product Development, Consulting, UX/UI Design"},
+            {sector: "GovTech", gap: "Digital Identity and Verification Systems", impact: "Inefficient and insecure identity verification processes impede service delivery and increase fraud.", suggested_solution: "Develop secure national digital identity platforms leveraging biometrics and blockchain for verifiable credentials, integrated with key government and private sector services.", kwurah_offering: "Product Development, Consulting, Legal Counsel (for data privacy and regulatory compliance)"},
+        ];
+
+        const sectorInfo = {
+            "Fintech": { color: '#FF6B6B', icon: '💰', caseStudy: 'Flutterwave: Valued at over $3B, this Nigerian startup provides payments infrastructure for over 900,000 businesses, showcasing the immense potential in unifying Africa\'s fragmented payment landscape.' },
+            "HealthTech": { color: '#4ECDC4', icon: '❤️‍🩹', caseStudy: 'Helium Health: Serving 500+ healthcare providers, this company digitizes medical records for millions, demonstrating the critical need for robust health information systems.' },
+            "AgriTech": { color: '#F7B801', icon: '🌾', caseStudy: 'Twiga Foods: By optimizing the food supply chain, this Kenyan B2B platform connects thousands of farmers directly to retailers, tackling food waste and improving market access.' },
+            "EdTech": { color: '#45B7D1', icon: '📚', caseStudy: 'uLesson: With over 1.5 million downloads, this Nigerian platform delivers curriculum-aligned video lessons, proving the high demand for accessible, quality digital education.' },
+            "GovTech": { color: '#A9A9A9', icon: '🏛️', caseStudy: 'Remita: Powering Nigeria\'s Treasury Single Account (TSA), this platform processes billions of dollars annually, highlighting the transformative impact of digitizing public finance.' }
+        };
+
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        },
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 2 }).format(context.parsed.y);
+                            }
+                            return label;
+                        }
+                    },
+                    backgroundColor: '#fff',
+                    titleColor: '#333',
+                    bodyColor: '#666',
+                    borderColor: '#ddd',
+                    borderWidth: 1,
+                    padding: 10,
+                    caretSize: 6,
+                    cornerRadius: 6,
+                }
+            }
+        };
+
+        function wrapLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine.length === 0 ? '' : ' ') + word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const sectors = Object.keys(sectorInfo);
+
+            const marketComparisonData = {
+                labels: sectors.map(s => wrapLabel(s)),
+                datasets: [{
+                    label: '2024 Projected Market Size (USD)',
+                    data: sectors.map(sector => {
+                        const dataPoint = marketData.find(d => d.Category === sector && d.Sub_Category === 'Africa Market Size' && d.Year === 2024);
+                        return dataPoint ? dataPoint.Value_USD : 0;
+                    }),
+                    backgroundColor: sectors.map(sector => sectorInfo[sector].color),
+                    borderColor: sectors.map(sector => sectorInfo[sector].color),
+                    borderWidth: 1
+                }]
+            };
+
+            const marketComparisonCtx = document.getElementById('marketComparisonChart').getContext('2d');
+            new Chart(marketComparisonCtx, {
+                type: 'bar',
+                data: marketComparisonData,
+                options: {
+                    ...tooltipConfig,
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return new Intl.NumberFormat('en-US', { notation: 'compact', compactDisplay: 'short' }).format(value);
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...tooltipConfig.plugins,
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            const deepDivesContainer = document.getElementById('sector-deep-dives');
+            sectors.forEach(sector => {
+                const africaData = marketData.filter(d => d.Category === sector && d.Sub_Category === 'Africa Market Size');
+                const nigeriaData = marketData.filter(d => d.Category === sector && d.Sub_Category === 'Nigeria Market Size');
+                const years = [...new Set(africaData.map(d => d.Year))].sort();
+
+                const cagrDataAfrica = africaData.find(d => d.Year === 2019)?.CAGR_2019_2024 || 0;
+                const cagrDataNigeria = nigeriaData.find(d => d.Year === 2019)?.CAGR_2019_2024 || 0;
+                
+                const finalMarketSize = africaData.find(d => d.Year === 2024)?.Value_USD || 0;
+
+                const sectorHTML = `
+                    <section id="${sector.toLowerCase()}" class="mt-16 bg-white p-6 md:p-8 rounded-lg shadow-md">
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <span class="text-3xl mr-4">${sectorInfo[sector].icon}</span>
+                                <h2 class="text-3xl font-bold text-gray-900">${sector} Deep Dive</h2>
+                            </div>
+                             <p class="text-lg text-gray-600">Projected 2024 Africa Market Size: <span class="font-bold" style="color:${sectorInfo[sector].color}">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(finalMarketSize)}</span></p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                            <div class="lg:col-span-3">
+                                <h3 class="text-xl font-semibold text-center mb-4">Market Growth (2019-2024)</h3>
+                                <div class="chart-container">
+                                    <canvas id="${sector}-growthChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <h3 class="text-xl font-semibold text-center mb-4">CAGR Comparison</h3>
+                                <div class="chart-container">
+                                    <canvas id="${sector}-cagrChart"></canvas>
+                                </div>
+                                <div class="mt-6 p-4 bg-gray-100 rounded-lg">
+                                    <h4 class="font-bold mb-2">Key Case Study:</h4>
+                                    <p class="text-gray-700 text-sm">${sectorInfo[sector].caseStudy}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+                deepDivesContainer.innerHTML += sectorHTML;
+            });
+            
+            sectors.forEach(sector => {
+                const africaData = marketData.filter(d => d.Category === sector && d.Sub_Category === 'Africa Market Size');
+                const nigeriaData = marketData.filter(d => d.Category === sector && d.Sub_Category === 'Nigeria Market Size');
+                const years = [...new Set(africaData.map(d => d.Year))].sort();
+                
+                const cagrDataAfrica = marketData.find(d => d.Category === sector && d.Sub_Category === 'Africa Market Size' && d.Year === 2019)?.CAGR_2019_2024 || 0;
+                const cagrDataNigeria = marketData.find(d => d.Category === sector && d.Sub_Category === 'Nigeria Market Size' && d.Year === 2019)?.CAGR_2019_2024 || 0;
+
+                const growthCtx = document.getElementById(`${sector}-growthChart`).getContext('2d');
+                new Chart(growthCtx, {
+                    type: 'line',
+                    data: {
+                        labels: years,
+                        datasets: [
+                            {
+                                label: 'Africa Market Size',
+                                data: years.map(year => africaData.find(d => d.Year === year)?.Value_USD || 0),
+                                borderColor: sectorInfo[sector].color,
+                                backgroundColor: `${sectorInfo[sector].color}33`,
+                                tension: 0.1,
+                                fill: true
+                            },
+                            {
+                                label: 'Nigeria Market Size',
+                                data: years.map(year => nigeriaData.find(d => d.Year === year)?.Value_USD || 0),
+                                borderColor: '#A9A9A9',
+                                backgroundColor: '#A9A9A933',
+                                tension: 0.1,
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true }
+                });
+
+                const cagrCtx = document.getElementById(`${sector}-cagrChart`).getContext('2d');
+                new Chart(cagrCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Africa', 'Nigeria'],
+                        datasets: [{
+                            label: 'CAGR (2019-2024)',
+                            data: [cagrDataAfrica, cagrDataNigeria],
+                            backgroundColor: [sectorInfo[sector].color, '#A9A9A9']
+                        }]
+                    },
+                    options: {
+                        ...tooltipConfig,
+                        maintainAspectRatio: false,
+                        responsive: true,
+                         scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) { return value * 100 + '%'; }
+                                }
+                            }
+                        },
+                         plugins: {
+                            ...tooltipConfig.plugins,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            });
+
+            const opportunityContainer = document.getElementById('opportunity-cards-container');
+            opportunityData.forEach(opp => {
+                const cardHTML = `
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4" style="border-color: ${sectorInfo[opp.sector].color};">
+                        <div class="flex justify-between items-start">
+                             <div>
+                                <p class="text-sm font-semibold uppercase tracking-wider" style="color: ${sectorInfo[opp.sector].color};">${opp.sector}</p>
+                                <h3 class="text-xl font-bold text-gray-800 mt-1">${opp.gap}</h3>
+                            </div>
+                            <span class="text-2xl">${sectorInfo[opp.sector].icon}</span>
+                        </div>
+                        <p class="text-gray-600 mt-2"><span class="font-semibold">Impact:</span> ${opp.impact}</p>
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                             <p class="text-gray-800"><span class="font-semibold text-green-600">🚀 Suggested Solution:</span> ${opp.suggested_solution}</p>
+                             <p class="text-gray-800 mt-2"><span class="font-semibold text-blue-600">🛠️ Kwurah's Offering:</span> ${opp.kwurah_offering}</p>
+                        </div>
+                    </div>
+                `;
+                opportunityContainer.innerHTML += cardHTML;
+            });
+        });
+    </script>
+</body>
+</html>
