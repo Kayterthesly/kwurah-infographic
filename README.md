@@ -39,8 +39,11 @@ You should now see the interactive infographic displayed in your browser.
 ## Project Structure
 
 kwurah-infographic/
-├── kwurah_infographic.html  # The main single-page infographic file
-└── README.md                # This file
+
+├── kwurah_infographic.html     # The main single-page infographic file
+
+└── README.md                   # This file
+
 ## Contributing
 
 This project is primarily for showcasing Kwurah's strategic insights. If you have suggestions for improvements or find issues, please open an issue in this repository.
