@@ -40,7 +40,7 @@ You should now see the interactive infographic displayed in your browser.
 
 kwurah-infographic/
 
-├── kwurah_infographic.html     # The main single-page infographic file
+├── index.html     # The main single-page infographic file
 
 └── README.md                   # This file
 
@@ -49,3 +49,4 @@ kwurah-infographic/
 This project is primarily for showcasing Kwurah's strategic insights. If you have suggestions for improvements or find issues, please open an issue in this repository.
 
 ---
+
